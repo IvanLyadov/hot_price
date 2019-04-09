@@ -31,3 +31,16 @@
     transform: rotate(360deg);
   }
 }
+
+
+.cst_card{
+  height: 100%;
+  border-radius: 0 !important;
+}
+.sct_product_wrapper{
+  margin-bottom: 20px;
+}
+.product-img{
+  max-width: 200px;
+  width: 100%;
+}

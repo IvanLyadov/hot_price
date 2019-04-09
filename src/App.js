@@ -10,26 +10,36 @@ class App extends Component {
 
     this.state = {
       data: null,
+      model: null,
     };
   }
 
   componentDidMount() {
-   fetch('https://stock.ssangyong.pl/api/getHotoffers/')
+    this.makeRequest('https://stock.ssangyong.pl/api/getHotoffers/', (data)=>{
+      this.setState({ data });
+    } );
+
+    this.makeRequest('https://stock.ssangyong.pl/api/getHotModels/', (data)=>{
+      this.setState({ model: data })
+    } )
+ }
+
+ makeRequest = (url, call_back)=>{
+   fetch(url)
      .then(response => {
        return response.json();
-       console.log(response);
      })
      .then(data => {
+       if (call_back)
+         call_back(data);
        console.log(data);
-       this.setState({ data })
      });
  }
 
   render() {
-    console.log(this.state);
     return (
       <div>
-        <Main/>
+        <Main data={this.state}/>
       </div>
     );
   }

@@ -1,51 +1,62 @@
 import React from 'react';
-import { Nav, NavItem, Dropdown, DropdownItem, DropdownToggle, DropdownMenu, NavLink } from 'reactstrap';
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem } from 'reactstrap';
 
-export default class PageNavigation extends React.Component {
+export default class Example extends React.Component {
   constructor(props) {
     super(props);
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      dropdownOpen: false
+      isOpen: false
     };
   }
-
   toggle() {
     this.setState({
-      dropdownOpen: !this.state.dropdownOpen
+      isOpen: !this.state.isOpen
     });
   }
-
   render() {
     return (
       <div>
-        <Nav pills>
-          <NavItem>
-            <NavLink href="#" active>Link</NavLink>
-          </NavItem>
-          <Dropdown nav isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-            <DropdownToggle nav caret>
-              Dropdown
-            </DropdownToggle>
-            <DropdownMenu>
-              <DropdownItem header>Header</DropdownItem>
-              <DropdownItem disabled>Action</DropdownItem>
-              <DropdownItem>Another Action</DropdownItem>
-              <DropdownItem divider />
-              <DropdownItem>Another Action</DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
-          <NavItem>
-            <NavLink href="#">Link</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink href="#">Another Link</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink disabled href="#">Disabled Link</NavLink>
-          </NavItem>
-        </Nav>
+        <Navbar color="light" light expand="md">
+          <NavbarBrand href="/">Garoca Oferty</NavbarBrand>
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse isOpen={this.state.isOpen} navbar>
+            <Nav className="ml-auto" navbar>
+              <NavItem>
+                <NavbarBrand href="/">Sortuj</NavbarBrand>
+              </NavItem>
+              <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle nav caret>
+                  Options
+                </DropdownToggle>
+                <DropdownMenu right>
+                  <DropdownItem>
+                    Option 1
+                  </DropdownItem>
+                  <DropdownItem>
+                    Option 2
+                  </DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem>
+                    Reset
+                  </DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
+            </Nav>
+          </Collapse>
+        </Navbar>
       </div>
     );
   }

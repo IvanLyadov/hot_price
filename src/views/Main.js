@@ -13,27 +13,22 @@ class Main extends React.Component {
     };
   }
 
-  componentDidMount(){
-    this.setState({
-
-    });
-  }
-
-
-
   render() {
+    let {data, model} = this.props.data;
 
     return (
       <Container>
         <Row>
-          <PageNavigation/>
+          <Col>
+            <PageNavigation/>
+          </Col>
         </Row>
         <Row>
           <Col xs="6" sm="3">
-            <LeftMenu/>
+            <LeftMenu model={model} />
           </Col>
           <Col xs="6" sm="9">
-            <ProductList/>
+            <ProductList data={data} />
           </Col>
         </Row>
       </Container>
