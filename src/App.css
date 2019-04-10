@@ -1,46 +1,97 @@
-.App {
-  text-align: center;
+html, body{
+  background-color: #f6f6f6;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 
 .cst_card{
   height: 100%;
-  border-radius: 0 !important;
+  border-radius : 0;
+  border: none;
 }
 .sct_product_wrapper{
   margin-bottom: 20px;
 }
 .product-img{
-  max-width: 200px;
+  max-width: 240px;
   width: 100%;
+}
+
+.content_crt_bg{
+  background: rgb(150,150,150);
+/* background: linear-gradient(180deg, rgba(150,150,150,1) 34%, rgba(255,255,255,1) 100%); */
+background: linear-gradient(180deg, rgba(150,150,150,1) 8%, rgba(255,255,255,1) 100%);
+}
+.product-full-title{
+  text-transform: uppercase;
+  font-size: 15px;
+}
+.product-desc-section{
+  color: #000;
+  font-weight: 600;
+  border: none;
+}
+.price-titles{
+  font-size: 12px;
+  text-transform: uppercase;
+
+}
+.price-items{
+  font-size: 14px;
+}
+.cst_card_prise_section{
+  padding: 0;
+}
+.prise-item{
+  /* background-color: #ededed;   */
+}
+.prise_item_wrapper{
+  background: #000;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  border: 1px solid #fff;
+  flex-direction: column;
+}
+.send-message-btn{
+  display: block;
+width: 100%;
+height: 100%;
+/* display: flex; */
+border-radius: 0;
+text-align: center;
+margin: 0 auto;
+cursor: pointer;
+justify-content: center;
+cursor: pointer;
+}
+.thumbnail-state{
+  margin-bottom: 0;
+  display: inline-block;
+  width: 55px;
+  background-color: #e02f2f;
+  padding-left: 11px;
+  padding-bottom: 4px;
+  border-radius: 0 0 0 8px;
+  position: relative;
+  font-size: 12px;
+}
+
+.thumbnail-state::before{
+  content: '';
+  position: absolute;
+  background-color: #e02f2f;
+  width: 5px;
+  top: -21px;
+  display: inline-block;
+  height: 32px;
+  left: 0;
+}
+.thumbnail-title{
+  margin-bottom: 0;
+  margin-left: 10px;
+  text-transform: uppercase;
+}
+@media (max-width: 800px) {
+  .cst_card_prise_section{
+    min-height: 200px;
+  }
 }

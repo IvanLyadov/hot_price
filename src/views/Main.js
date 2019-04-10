@@ -14,7 +14,7 @@ class Main extends React.Component {
   }
 
   render() {
-    let {data, model} = this.props.data;
+    let {data, model, filterByModel} = this.props.data;
 
     return (
       <Container>
@@ -24,10 +24,10 @@ class Main extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col xs="6" sm="3">
-            <LeftMenu model={model} />
+          <Col xs="12" sm="12" md="12" lg="3">
+            <LeftMenu model={model} filterByModel={filterByModel} />
           </Col>
-          <Col xs="6" sm="9">
+          <Col xs="12" sm="12" md="12" lg="9">
             <ProductList data={data} />
           </Col>
         </Row>

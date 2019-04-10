@@ -1,39 +1,50 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
 import Main from './views/Main.js';
+import axios from 'axios'
 
 class App extends Component {
 
   constructor(props) {
     super(props);
 
+    this.getHotoffersLUrl = 'https://stock.ssangyong.pl/api/getHotoffers/';
+    this.getHotModelsUrl = 'https://stock.ssangyong.pl/api/getHotModels/';
+
     this.state = {
       data: null,
       model: null,
+      filterByModel: this.filterByModel,
     };
   }
 
   componentDidMount() {
-    this.makeRequest('https://stock.ssangyong.pl/api/getHotoffers/', (data)=>{
-      this.setState({ data });
+    this.makeRequest(this.getHotoffersLUrl, 'get', null, (data)=>{
+      this.setState({ data: data.data });
     } );
 
-    this.makeRequest('https://stock.ssangyong.pl/api/getHotModels/', (data)=>{
-      this.setState({ model: data })
+    this.makeRequest(this.getHotModelsUrl, 'get', null, (data)=>{
+      this.setState({ model: data.data })
     } )
  }
 
- makeRequest = (url, call_back)=>{
-   fetch(url)
-     .then(response => {
-       return response.json();
-     })
-     .then(data => {
-       if (call_back)
-         call_back(data);
-       console.log(data);
-     });
+ filterByModel = (params) => {
+   this.makeRequest(this.getHotoffersLUrl, 'post', params, (data)=>{
+     this.setState({ data: data.data });
+   } );
+ }
+
+ makeRequest = (url, method, data=null, call_back)=>{
+    axios({
+      method: method,
+      url:url,
+      responseType:'stream',
+      data: data,
+    })
+    .then(function(response) {
+      console.log(response)
+      if (call_back)
+        call_back(response);
+    });
  }
 
   render() {

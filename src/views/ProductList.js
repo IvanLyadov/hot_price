@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Button, CardTitle, CardText, Col, Row } from 'reactstrap';
+import { Card, CardTitle, Col, Row } from 'reactstrap';
 
 class ProductList extends React.Component {
   constructor(props, context) {
@@ -14,24 +14,28 @@ class ProductList extends React.Component {
           data && data.map((obj, index) => {
             return(
               <Row key={index} className="no-gutters sct_product_wrapper">
-                <Col xs="4">
-                  <Card className="cst_card" body inverse color="primary" style={{backgroundImage: `url()`}}>
-                    <CardTitle>
+                <Col xs="12" md="12" lg="4">
+                  <Card className="cst_card content_crt_bg" body inverse color="primary">
+                    <CardTitle className="thumbnail-title">
                       {
                         obj.title
                       }
                     </CardTitle>
-                    <CardTitle>
+
                       {
-                        obj.new_used
+                        obj.new_used === 'new' ?
+                        (
+                          <CardTitle className="thumbnail-state">NOWY</CardTitle>
+                        )
+                         : null
                       }
-                    </CardTitle>
-                    <img className="product-img" src={`https://www.ssangyong.pl/konfigurator-images/images/${obj.params.model.toLowerCase()}/${obj.params.my}/colors/cars/${obj.params.color.toLowerCase().replace(' ', '_')}.png`}></img>
+
+                    <img className="product-img" alt="product" src={`https://www.ssangyong.pl/konfigurator-images/images/${obj.params.model.toLowerCase()}/${obj.params.my}/colors/cars/${obj.params.color.toLowerCase().replace(' ', '_')}.png`}></img>
                   </Card>
                 </Col>
-                <Col xs="5">
-                  <Card className="cst_card" body inverse style={{ backgroundColor: '#333', borderColor: '#333' }}>
-                    <CardTitle>
+                <Col xs="12" md="12" lg="5">
+                  <Card className="cst_card product-desc-section" body>
+                    <CardTitle className="product-full-title">
                       {
                         `${obj.params.engine_capacity} ${obj.params.fuel_type} ${obj.params.transmission} ${obj.params.gearbox} | ${obj.params.color}`
                       }
@@ -78,66 +82,59 @@ class ProductList extends React.Component {
                     </Row>
                   </Card>
                 </Col>
-                <Col xs="3">
-                  <Card className="cst_card" body inverse color="primary">
-                  <Row>
-                    <Col xs="5">
-                      Cena bazowa
-                    </Col>
-                    <Col xs="7">
-                      {
-                        obj.params.price.srp
-                      }
-                      <span>
-                        {
-                          obj.params.price.currency
-                        }
-                      </span>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col xs="5">
-                      Rabat
-                    </Col>
-                    <Col xs="7">
-                      {
-                        obj.params.price.discount
-                      }
-                      <span>
-                        {
-                          obj.params.price.currency
-                        }
-                      </span>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col xs="5">
-                      Goraca cena
-                    </Col>
-                    <Col xs="7">
-                      {
-                        obj.params.price.hot_price
-                      }
-                      <span>
-                        {
-                          obj.params.price.currency
-                        }
-                      </span>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <Button color="secondary">Button</Button>
-                    </Col>
-                  </Row>
-
+                <Col xs="12" md="12" lg="3">
+                  <Card className="cst_card cst_card_prise_section" body inverse>
+                  <div className="prise_item_wrapper">
+                    <Row>
+                      <Col xs="6">
+                        <span className="price-titles">
+                          Cena bazowa
+                        </span>
+                      </Col>
+                      <Col xs="6">
+                        <span className="price-items" dangerouslySetInnerHTML={{__html: obj.params.price.srp}}></span>
+                        <span className="price-items" dangerouslySetInnerHTML={{__html: obj.params.price.currency}}></span>
+                      </Col>
+                    </Row>
+                  </div>
+                  <div className="prise_item_wrapper">
+                    <Row>
+                      <Col xs="6">
+                        <span className="price-titles">
+                          Rabat
+                        </span>
+                      </Col>
+                      <Col xs="6">
+                        <span className="price-items" dangerouslySetInnerHTML={{__html: obj.params.price.discount}}></span>
+                        <span className="price-items" dangerouslySetInnerHTML={{__html: obj.params.price.currency}}></span>
+                      </Col>
+                    </Row>
+                  </div>
+                  <div className="prise_item_wrapper">
+                    <Row>
+                      <Col xs="6">
+                        <span className="price-titles">
+                          Goraca cena
+                        </span>
+                      </Col>
+                      <Col xs="6">
+                        <span className="price-items" dangerouslySetInnerHTML={{__html: obj.params.price.hot_price}}></span>
+                        <span className="price-items" dangerouslySetInnerHTML={{__html: obj.params.price.currency}}></span>
+                      </Col>
+                    </Row>
+                  </div>
+                  <div className="prise_item_wrapper">
+                    <Row>
+                      <Col>
+                        <a href="to:" className="send-message-btn" >Button</a>
+                      </Col>
+                    </Row>
+                    </div>
                   </Card>
                 </Col>
               </Row>
             );
           })
-
-
     );
   }
 
