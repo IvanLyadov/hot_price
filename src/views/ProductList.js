@@ -13,7 +13,7 @@ class ProductList extends React.Component {
 
           data && data.map((obj, index) => {
             return(
-              <Row key={index} className="no-gutters sct_product_wrapper">
+              <Row key={index} className={ `no-gutters sct_product_wrapper sct_product_${obj.status}`}>
                 <Col xs="12" md="12" lg="4">
                   <Card className="cst_card content_crt_bg" body inverse color="primary">
                     <CardTitle className="thumbnail-title">
@@ -93,7 +93,7 @@ class ProductList extends React.Component {
                       </Col>
                       <Col xs="6">
                         <span className="price-items" dangerouslySetInnerHTML={{__html: obj.params.price.srp}}></span>
-                        <span className="price-items" dangerouslySetInnerHTML={{__html: obj.params.price.currency}}></span>
+                        <span className="price-currency" dangerouslySetInnerHTML={{__html: obj.params.price.currency}}></span>
                       </Col>
                     </Row>
                   </div>
@@ -106,7 +106,7 @@ class ProductList extends React.Component {
                       </Col>
                       <Col xs="6">
                         <span className="price-items" dangerouslySetInnerHTML={{__html: obj.params.price.discount}}></span>
-                        <span className="price-items" dangerouslySetInnerHTML={{__html: obj.params.price.currency}}></span>
+                        <span className="price-currency" dangerouslySetInnerHTML={{__html: obj.params.price.currency}}></span>
                       </Col>
                     </Row>
                   </div>
@@ -119,7 +119,7 @@ class ProductList extends React.Component {
                       </Col>
                       <Col xs="6">
                         <span className="price-items" dangerouslySetInnerHTML={{__html: obj.params.price.hot_price}}></span>
-                        <span className="price-items" dangerouslySetInnerHTML={{__html: obj.params.price.currency}}></span>
+                        <span className="price-currency" dangerouslySetInnerHTML={{__html: obj.params.price.currency}}></span>
                       </Col>
                     </Row>
                   </div>

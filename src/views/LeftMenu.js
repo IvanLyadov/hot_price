@@ -20,11 +20,11 @@ export default class LeftMenu extends React.Component {
     return (
       <Form>
         <FormGroup>
-          <Label>Wybierz model</Label>
+          <Label className="model-label">Wybierz model</Label>
           {
             model && model.map((obj, index)=>{
               return (
-                <div key={index} >
+                <div key={index} className="model-wrapper" >
                   <CustomInput type="checkbox" id={`model-${index}`} className="models-items" model-name={obj.model} label={obj.model} onChange={e => {this.CheckboxHandler(e)}} />
                 </div>
               );

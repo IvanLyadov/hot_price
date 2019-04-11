@@ -36,28 +36,27 @@ export default class Example extends React.Component {
       this.setState({
         curren_hot_price: current_string,
       });
-      console.log(current_btn.getAttribute('price_type'));
       this.props.filterByModel(current_btn.getAttribute('price_type'), 'hot_price');
   }
 
   render() {
     return (
       <div>
-        <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">Gorące oferty</NavbarBrand>
+        <Navbar color="light" light expand="md" className="cst_nav">
+          <NavbarBrand href="/" className="brand-title">Gorące oferty</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
                 <NavbarBrand className="nav_item_title">Sortuj:</NavbarBrand>
               </NavItem>
-              <UncontrolledDropdown nav inNavbar>
+              <UncontrolledDropdown nav inNavbar className="cst_dropdown">
                 <DropdownToggle nav caret>
                   {
                       this.state.curren_hot_price
                   }
                 </DropdownToggle>
-                <DropdownMenu right>
+                <DropdownMenu right className="cst_dropdown_wrapper">
                   <DropdownItem price_type="asc" onClick={e => this.dropdownHandler(e)}>
                     Rosnąco
                   </DropdownItem>
@@ -65,7 +64,7 @@ export default class Example extends React.Component {
                     Malejąco
                   </DropdownItem>
                   <DropdownItem divider />
-                  <DropdownItem id="reset" onClick={e => this.dropdownHandler(e)}>
+                  <DropdownItem id="reset" price_type="" onClick={e => this.dropdownHandler(e)}>
                     Reset
                   </DropdownItem>
                 </DropdownMenu>
