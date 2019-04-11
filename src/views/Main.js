@@ -20,7 +20,7 @@ class Main extends React.Component {
       <Container>
         <Row>
           <Col>
-            <PageNavigation/>
+            <PageNavigation filterByModel={filterByModel}/>
           </Col>
         </Row>
         <Row>

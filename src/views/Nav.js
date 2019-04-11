@@ -17,7 +17,8 @@ export default class Example extends React.Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      isOpen: false
+      isOpen: false,
+      curren_hot_price: 'CENA'
     };
   }
   toggle() {
@@ -25,30 +26,46 @@ export default class Example extends React.Component {
       isOpen: !this.state.isOpen
     });
   }
+
+  dropdownHandler= (event) =>{
+      let current_btn = event.currentTarget
+      let current_string = current_btn.innerHTML
+      if (current_btn.id === 'reset') {
+          current_string = 'CENA';
+      }
+      this.setState({
+        curren_hot_price: current_string,
+      });
+      console.log(current_btn.getAttribute('price_type'));
+      this.props.filterByModel(current_btn.getAttribute('price_type'), 'hot_price');
+  }
+
   render() {
     return (
       <div>
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">Garoca Oferty</NavbarBrand>
+          <NavbarBrand href="/">Gorące oferty</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavbarBrand href="/">Sortuj</NavbarBrand>
+                <NavbarBrand className="nav_item_title">Sortuj:</NavbarBrand>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
-                  Options
+                  {
+                      this.state.curren_hot_price
+                  }
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem>
-                    Option 1
+                  <DropdownItem price_type="asc" onClick={e => this.dropdownHandler(e)}>
+                    Rosnąco
                   </DropdownItem>
-                  <DropdownItem>
-                    Option 2
+                  <DropdownItem price_type="desc" onClick={e => this.dropdownHandler(e)}>
+                    Malejąco
                   </DropdownItem>
                   <DropdownItem divider />
-                  <DropdownItem>
+                  <DropdownItem id="reset" onClick={e => this.dropdownHandler(e)}>
                     Reset
                   </DropdownItem>
                 </DropdownMenu>

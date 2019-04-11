@@ -4,13 +4,15 @@ import { CustomInput, Form, FormGroup, Label } from 'reactstrap';
 export default class LeftMenu extends React.Component {
 
   CheckboxHandler = (event) => {
-    let model_name = event.currentTarget.getAttribute('model-name');
-    // let params = {
-    //   'sort[hot_price]': 'asc',
-    //   moodel: model_name,
-    // }
-    let params = `sort[hot_price]=desc&moodel=${model_name}`
-    this.props.filterByModel(params);
+    // let model_name = event.currentTarget.getAttribute('model-name');
+    let models_values = document.querySelectorAll('.models-items input');
+    let params = [];
+    models_values.forEach(obj => {
+      if (obj.checked)
+        params.push(obj.getAttribute('model-name'));
+    });
+    let post_params = `${params.toString()}`
+    this.props.filterByModel(post_params, 'model_params');
   }
 
   render() {
@@ -18,12 +20,12 @@ export default class LeftMenu extends React.Component {
     return (
       <Form>
         <FormGroup>
-          <Label for="exampleCheckbox">Wybierz model</Label>
+          <Label>Wybierz model</Label>
           {
             model && model.map((obj, index)=>{
               return (
                 <div key={index} >
-                  <CustomInput type="checkbox" id={`model-${index}`} model-name={obj.model} label={obj.model} onClick={e => {this.CheckboxHandler(e)}} />
+                  <CustomInput type="checkbox" id={`model-${index}`} className="models-items" model-name={obj.model} label={obj.model} onChange={e => {this.CheckboxHandler(e)}} />
                 </div>
               );
             })

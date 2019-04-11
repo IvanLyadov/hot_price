@@ -2,9 +2,9 @@ import React from 'react';
 import { Card, CardTitle, Col, Row } from 'reactstrap';
 
 class ProductList extends React.Component {
-  constructor(props, context) {
-   super(props, context);
- }
+ //  constructor(props, context) {
+ //   super(props, context);
+ // }
 
   render() {
     let {data} = this.props;
@@ -84,7 +84,7 @@ class ProductList extends React.Component {
                 </Col>
                 <Col xs="12" md="12" lg="3">
                   <Card className="cst_card cst_card_prise_section" body inverse>
-                  <div className="prise_item_wrapper">
+                  <div className="prise_item_wrapper prise_item_one">
                     <Row>
                       <Col xs="6">
                         <span className="price-titles">
@@ -97,7 +97,7 @@ class ProductList extends React.Component {
                       </Col>
                     </Row>
                   </div>
-                  <div className="prise_item_wrapper">
+                  <div className="prise_item_wrapper prise_item_two">
                     <Row>
                       <Col xs="6">
                         <span className="price-titles">
@@ -110,7 +110,7 @@ class ProductList extends React.Component {
                       </Col>
                     </Row>
                   </div>
-                  <div className="prise_item_wrapper">
+                  <div className="prise_item_wrapper prise_item_three">
                     <Row>
                       <Col xs="6">
                         <span className="price-titles">
@@ -123,10 +123,10 @@ class ProductList extends React.Component {
                       </Col>
                     </Row>
                   </div>
-                  <div className="prise_item_wrapper">
+                  <div className="prise_item_wrapper prise_item_four">
                     <Row>
                       <Col>
-                        <a href="to:" className="send-message-btn" >Button</a>
+                        <a href={`mailto:${obj.dealer_email}`} className="send-message-btn" >Zapytaj</a>
                       </Col>
                     </Row>
                     </div>

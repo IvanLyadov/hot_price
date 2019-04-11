@@ -13,6 +13,8 @@ class App extends Component {
     this.state = {
       data: null,
       model: null,
+      model_params: '',
+      hot_price: '',
       filterByModel: this.filterByModel,
     };
   }
@@ -27,17 +29,39 @@ class App extends Component {
     } )
  }
 
- filterByModel = (params) => {
-   this.makeRequest(this.getHotoffersLUrl, 'post', params, (data)=>{
-     this.setState({ data: data.data });
+ filterByModel = (params, type) => {
+   let model_params = {};
+   switch (type) {
+     case 'model_params':
+         model_params['sort[hot_price]'] = this.state.hot_price;
+         model_params.model = params;
+       break;
+
+       case 'hot_price':
+           model_params['sort[hot_price]'] = params;
+             model_params.model = this.state.model_params;
+
+        break;
+     default:
+     }
+   let post_params = this.objToQueryString(model_params)
+   console.log(post_params);
+   this.makeRequest(this.getHotoffersLUrl, 'post', post_params, (data)=>{
+       this.setState({
+         data: data.data,
+         [type]: params
+       });
    } );
+ }
+
+ objToQueryString = (params) => {
+   return Object.keys(params).map(key => key + '=' + params[key]).join('&');
  }
 
  makeRequest = (url, method, data=null, call_back)=>{
     axios({
       method: method,
       url:url,
-      responseType:'stream',
       data: data,
     })
     .then(function(response) {

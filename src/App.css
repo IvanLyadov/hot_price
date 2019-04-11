@@ -25,7 +25,7 @@ background: linear-gradient(180deg, rgba(150,150,150,1) 8%, rgba(255,255,255,1) 
   font-size: 15px;
 }
 .product-desc-section{
-  color: #000;
+  color: #696f77;
   font-weight: 600;
   border: none;
 }
@@ -48,7 +48,6 @@ background: linear-gradient(180deg, rgba(150,150,150,1) 8%, rgba(255,255,255,1) 
   height: 100%;
   display: flex;
   justify-content: center;
-  border: 1px solid #fff;
   flex-direction: column;
 }
 .send-message-btn{
@@ -89,6 +88,28 @@ cursor: pointer;
   margin-bottom: 0;
   margin-left: 10px;
   text-transform: uppercase;
+}
+.prise_item_four{
+    background-color: #e02f2f;
+}
+.prise_item_four a{
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 14px;
+}
+.prise_item_three{
+  background-color: #e2dddd;
+  color: #e02f2f;
+}
+.prise_item_one,
+.prise_item_two{
+  background-color: #ededed;
+  color: #727272;
+}
+.nav_item_title{
+  color:#454545 !important;
 }
 @media (max-width: 800px) {
   .cst_card_prise_section{
