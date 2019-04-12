@@ -2,10 +2,6 @@ import React from 'react';
 import { Card, CardTitle, Col, Row } from 'reactstrap';
 
 class ProductList extends React.Component {
- //  constructor(props, context) {
- //   super(props, context);
- // }
-
   render() {
     let {data} = this.props;
 
@@ -13,13 +9,21 @@ class ProductList extends React.Component {
 
           data && data.map((obj, index) => {
             return(
-              <Row key={index} className={ `no-gutters sct_product_wrapper sct_product_${obj.status}`}>
+              <Row key={index} className={ `no-gutters sct_product_wrapper sct_product_wrapper_${obj.status}`}>
+                <div className={ `sct_product_${obj.status}`}></div>
                 <Col xs="12" md="12" lg="4">
-                  <Card className="cst_card content_crt_bg" body inverse color="primary">
+                  <Card className="cst_card content_crt_bg" body inverse>
                     <CardTitle className="thumbnail-title">
-                      {
-                        obj.title
-                      }
+                      <span className="title-bold">
+                        {
+                          obj.title.substring(0, obj.title.indexOf(" "))
+                        }
+                      </span>
+                      <span>
+                        {
+                          obj.title.substring(obj.title.indexOf(" "), obj.title.length)
+                        }
+                      </span>
                     </CardTitle>
 
                       {
@@ -42,42 +46,58 @@ class ProductList extends React.Component {
                     </CardTitle>
                     <Row>
                       <Col xs="5">
-                        Wersja
+                        <span className="cst_product_desc">
+                          Wersja
+                        </span>
                       </Col>
                       <Col xs="7">
-                        {
-                          obj.params.model
-                        }
+                        <span className="cst_product_content">
+                          {
+                            obj.params.model
+                          }
+                        </span>
                       </Col>
                     </Row>
                     <Row>
                       <Col xs="5">
-                        Rok produkcji
+                        <span className="cst_product_desc">
+                          Rok produkcji
+                        </span>
                       </Col>
                       <Col xs="7">
-                        {
-                          obj.params.year
-                        }
+                        <span className="cst_product_content">
+                          {
+                            obj.params.year
+                          }
+                        </span>
                       </Col>
                     </Row>
                     <Row>
                       <Col xs="5">
-                        Rok modelowy
+                        <span className="cst_product_desc">
+                          Rok modelowy
+                        </span>
                       </Col>
                       <Col xs="7">
-                        {
-                          obj.params.my
-                        }
+                        <span className="cst_product_content">
+                          {
+                            obj.params.my
+                          }
+                        </span>
                       </Col>
                     </Row>
                     <Row>
                       <Col xs="5">
-                        Wyposizanie
+                        <span className="cst_product_desc">
+                          Wyposizanie
+                        </span>
                       </Col>
                       <Col xs="7">
-                        {
-                          obj.params.option
-                        }
+                        <span className="cst_product_content">
+                          {
+                            obj.params.option
+                          }
+                        </span>
                       </Col>
                     </Row>
                   </Card>
@@ -123,10 +143,15 @@ class ProductList extends React.Component {
                       </Col>
                     </Row>
                   </div>
-                  <div className="prise_item_wrapper prise_item_four">
+                  <div className={`prise_item_wrapper prise_item_four prise_item_four_${obj.status}`}>
                     <Row>
                       <Col>
-                        <a href={`mailto:${obj.dealer_email}`} className="send-message-btn" >Zapytaj</a>
+                        {
+                          obj.status !== 'sold' ?
+                            ( <a href={`mailto:${obj.dealer_email}`} className="send-message-btn disabled" >Zapytaj</a> )
+                           :
+                           <a className="send-message-btn disabled" >Zapytaj</a>
+                        }
                       </Col>
                     </Row>
                     </div>

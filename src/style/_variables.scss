@@ -1,2 +1,18 @@
 // color scheme
-$color-scheme: #e02f2f
+$color-scheme: #e02f2f;
+// product gradient
+$product-bg-gradient: linear-gradient(180deg, rgba(150,150,150,1) 8%, rgba(255,255,255,1) 100%);
+$product-bg-stripes: repeating-linear-gradient(-43deg, rgba(220, 220, 220, 0), rgba(210, 210, 210, 0) 24px, rgb(195, 196, 195) 10px, rgba(142, 142, 142, 0.5) 47px);
+
+@mixin product-column-properties{
+  padding-right: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+@mixin product-column-property-two{
+  background-color: #ededed;
+  color: #727272;
+  padding: 0 15px;
+  font-size: 12px;
+}

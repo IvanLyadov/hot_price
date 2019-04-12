@@ -1,0 +1,195 @@
+.thumbnail-title{
+  margin-bottom: 0;
+  margin-left: 10px;
+  text-transform: uppercase;
+  .title-bold{
+    font-weight: 600;
+  }
+}
+
+.thumbnail-state{
+  margin-bottom: 0;
+  display: inline-block;
+  width: 55px;
+  background-color: $color-scheme;
+  padding-left: 11px;
+  padding-bottom: 2px;
+  padding-top: 2px;
+  border-radius: 0 0 0 8px;
+  position: relative;
+  font-size: 12px;
+
+  &::before{
+    content: '';
+    position: absolute;
+    background-color: $color-scheme;
+    width: 5px;
+    top: -21px;
+    display: inline-block;
+    height: 32px;
+    left: 0;
+  }
+}
+.product-img{
+  max-width: 240px;
+  width: 100%;
+  margin: 0 auto;
+}
+.cst_card_prise_section{
+  padding: 0;
+  @media (max-width: 800px) {
+      min-height: 200px;
+  }
+}
+.product-desc-section{
+  color: #696f77;
+  font-weight: 600;
+  border: none;
+}
+.product-full-title{
+  text-transform: uppercase;
+  font-size: 13px;
+}
+.cst_card{
+  height: 100%;
+  border-radius : 0;
+  border: none;
+  .cst_product_content,
+  .cst_product_desc{
+    font-size: 12px;
+  }
+}
+.sct_product_wrapper{
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.sct_product_wrapper_sold{
+  &::before{
+    content: "";
+    position: absolute;
+    z-index: 99;
+    font-weight: 600;
+    font-size: 9rem;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: $product-bg-stripes;
+  }
+}
+.content_crt_bg{
+  background: rgb(150,150,150);
+  background: $product-bg-gradient;
+}
+
+.price-titles{
+  font-size: 11px;
+  text-transform: uppercase;
+
+}
+.price-items{
+  font-size: 18px;
+  font-weight: 600;
+}
+.price-currency{
+    font-size: 9px;
+    margin-top: 6px;
+    display: inline-block;
+    position: absolute;
+    top: -3px;
+}
+.prise_item_wrapper{
+  background: #000;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.send-message-btn{
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  text-align: center;
+  margin: 0 auto;
+  cursor: pointer;
+  justify-content: center;
+}
+.prise_item_four{
+  background-color: $color-scheme;
+  a{
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 14px;
+  }
+}
+.prise_item_four_sold{
+  background-color: #e2dddd;
+  border-top: 1px solid #fff;
+}
+.prise_item_three{
+  background-color: #e2dddd;
+  color: $color-scheme;
+  padding: 0 15px;
+}
+.prise_item_one{
+  @include product-column-property-two;
+  .col-6:first-child{
+    @include product-column-properties;
+  }
+  .col-6:nth-child(2){
+    padding-left: 5px;
+  }
+}
+
+.prise_item_two{
+  @include product-column-property-two;
+  .col-6:first-child{
+    @include product-column-properties;
+  }
+  .col-6:nth-child(2){
+    padding-left: 5px;
+  }
+}
+.prise_item_three .col-6:first-child{
+  @include product-column-properties;
+}
+
+.prise_item_three{
+  .col-6:nth-child(2){
+    padding-left: 5px;
+  }
+}
+
+.brand-title,
+.model-label{
+  text-transform: uppercase;
+  font-size: 18px;
+}
+
+.sct_product_sold::after {
+  content: "SPRZEDANY";
+  position: absolute;
+  z-index: 99;
+  font-weight: 800;
+  font-size: 9rem;
+  transform: rotate(-14deg);
+  color: #9e9e9e;
+  left: 0;
+  right: 0;
+  top: 6px;
+  bottom: 0;
+  opacity: 0.8;
+
+  @media (max-width: 990px) {
+      top: 40%;
+      font-size: 7.8rem;
+      transform: rotate(-44deg);
+  }
+}
+.sct_product_available{
+  display: none;
+}

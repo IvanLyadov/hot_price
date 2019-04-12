@@ -1,0 +1,16 @@
+.model-wrapper label{
+  &::before{
+    border-radius: 0 !important;
+    border: 1px solid #000;
+  }
+
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 14px;
+  color: #717171;
+}
+
+.model-wrapper .custom-control-input:checked~.custom-control-label::before{
+  border-color: $color-scheme;
+  background-color: $color-scheme;
+}

@@ -45,7 +45,6 @@ class App extends Component {
      default:
      }
    let post_params = this.objToQueryString(model_params)
-   console.log(post_params);
    this.makeRequest(this.getHotoffersLUrl, 'post', post_params, (data)=>{
        this.setState({
          data: data.data,
@@ -65,7 +64,6 @@ class App extends Component {
       data: data,
     })
     .then(function(response) {
-      console.log(response)
       if (call_back)
         call_back(response);
     });

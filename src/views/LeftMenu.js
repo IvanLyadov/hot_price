@@ -4,7 +4,6 @@ import { CustomInput, Form, FormGroup, Label } from 'reactstrap';
 export default class LeftMenu extends React.Component {
 
   CheckboxHandler = (event) => {
-    // let model_name = event.currentTarget.getAttribute('model-name');
     let models_values = document.querySelectorAll('.models-items input');
     let params = [];
     models_values.forEach(obj => {

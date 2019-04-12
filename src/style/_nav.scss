@@ -1,0 +1,28 @@
+.nav_item_title{
+  color:#454545 !important;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+.cst_dropdown_wrapper{
+  button{
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
+    color: #6d6d6d;
+  }
+}
+.cst_dropdown{
+    a{
+        margin-top: -3px;
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+    .dropdown-toggle::after{
+        border-top: 0.6em solid;
+        vertical-align: 0.055em;
+    }
+}
+.cst_nav{
+  padding-left: 0;
+  background-color: inherit !important;
+}
